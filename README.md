@@ -1,6 +1,6 @@
 # Mek's Battle Ship
 
-a fun little game I created whilst learning PyGame.
+A fun little game I created whilst learning PyGame.
 
 Table of Contents:
 
@@ -19,15 +19,15 @@ To be able to run this game, you will need the following items installed on your
     - To install Git on your system, [click here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 2) After you've installed python, you will need to clone this repository.
-    - open your command prompt and cd to the desired install location.
-    - once inside the desired install location, type `git clone https://github.com/mekasu0124/MeksBattleShip.git`
-    - after the clone has finished you will need to create a virtual environment. cd into the cloned repo using `cd MeksBattleShip` and run the following:
+    - Open your command prompt and cd to the desired install location.
+    - Once inside the desired install location, type `git clone https://github.com/mekasu0124/MeksBattleShip.git`
+    - After the clone has finished you will need to create a virtual environment. cd into the cloned repo using `cd MeksBattleShip` and run the following:
         - Windows: `python.exe -m venv env`
         - Mac & Linux: `python -m venv env`
-    - once the venv has finished, you'll then type either command below (os dependent) to activate the venv:
+    - Once the venv has finished, you'll then type either command below (os dependent) to activate the venv:
         - Windows: `env\Scripts\activate`
         - Mac & Linux: `source env/bin/activate`
-    - after activation, your terminal should look something like this `(env) C:\Users\Usr\<path_to_cloned_repo>`. Now you need to install the requirements for the program.
+    - After activation, your terminal should look something like this `(env) C:\Users\Usr\<path_to_cloned_repo>`. Now you need to install the requirements for the program.
         - Windows: `python.exe -m pip install -r requirements.txt`
         - Mac & Linux: `pip install -r requirements.txt`
 
