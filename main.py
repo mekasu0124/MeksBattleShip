@@ -23,7 +23,10 @@ SCORE = 0
 
 font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
+font_medium = pygame.font.SysFont("Verdana", 40)
+
 game_over = font.render("Game Over", True, BLACK)
+game_over2 = font_medium.render(f"Your Score: {SCORE}", True, BLACK)
 
 background = pygame.image.load("Space.jpg")
 
@@ -104,6 +107,7 @@ while True:
 
         DISPLAYSURF.fill(RED)
         DISPLAYSURF.blit(game_over, (30,250))
+        DISPLAYSURF.blit(game_over2, (60,330))
 
         pygame.display.update()
 
