@@ -1,9 +1,10 @@
 import sys
 import pygame
-import random
 import time
 
 from pygame.locals import *
+from modules.player import Player
+from modules.enemy import Enemy
 
 pygame.init()
 
@@ -19,60 +20,22 @@ WHITE = (255,255,255)
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 600
 SPEED = 5
-SCORE = 0
+
+P1 = Player(SCREEN_WIDTH)
+E1 = Enemy(SCREEN_WIDTH, SPEED)
 
 font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
 font_medium = pygame.font.SysFont("Verdana", 40)
 
 game_over = font.render("Game Over", True, BLACK)
-game_over2 = font_medium.render(f"Your Score: {SCORE}", True, BLACK)
+game_over2 = font_medium.render(f"Your Score: {E1.score}", True, BLACK)
 
 background = pygame.image.load("Space.jpg")
 
 DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
 DISPLAYSURF.fill(WHITE)
 pygame.display.set_caption("Game")
-
-class Enemy(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-
-        self.image = pygame.image.load("Enemy.png")
-        self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(40,SCREEN_WIDTH-40),0)
-
-    def move(self):
-        global SCORE
-
-        self.rect.move_ip(0,SPEED)
-
-        if (self.rect.bottom > 600):
-            SCORE += 1
-            self.rect.top = 0
-            self.rect.center = (random.randint(30,370),0)
-
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-
-        self.image = pygame.image.load("Player.png")
-        self.rect = self.image.get_rect()
-        self.rect.center = (160,520)
-
-    def move(self):
-        pressed_keys = pygame.key.get_pressed()
-
-        if self.rect.left > 0:
-            if pressed_keys[K_LEFT]:
-                self.rect.move_ip(-5,0)
-
-        if self.rect.right < SCREEN_WIDTH:
-            if pressed_keys[K_RIGHT]:
-                self.rect.move_ip(5,0)
-
-P1 = Player()
-E1 = Enemy()
 
 enemies = pygame.sprite.Group()
 enemies.add(E1)
@@ -94,7 +57,7 @@ while True:
             sys.exit()
 
     DISPLAYSURF.blit(background, (0,0))
-    scores = font_small.render(f"Score: {SCORE}", True, WHITE)
+    scores = font_small.render(f"Score: {E1.score}", True, WHITE)
     DISPLAYSURF.blit(scores, (10,10))
 
     for entity in all_sprites:
